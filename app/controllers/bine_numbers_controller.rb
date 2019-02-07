@@ -1,0 +1,2 @@
+class BineNumbersController < ApplicationController
+end

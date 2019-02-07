@@ -1,0 +1,2 @@
+module ScataNumbersHelper
+end

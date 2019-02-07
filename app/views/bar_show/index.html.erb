@@ -1,0 +1,23 @@
+<h2>グラフを表示</h2>
+<p>
+  平均：<%= @average %>
+</p>
+<p>
+  分散：<%= @dispersion %>
+</p>
+<p>
+  標準偏差：<%= @deviation %>
+</p>
+
+
+<%= high_chart("agraph", @bar_chart) %>
+<body>
+ <%= high_chart("sort_chart", @sort_chart) %>
+  <%= high_chart("box_chart", @box_chart) %>
+  <%= high_chart("average_double_chart", @average_double_chart) %>
+<%= high_chart("average_chart", @average_chart) %>
+  <%= high_chart("medium_double_chart", @medium_double_chart) %>
+<%= high_chart("medium_chart", @medium_chart) %>
+
+
+<%= link_to'タイトルに戻る',bars_path %>

@@ -1,0 +1,15 @@
+<h2>グラフの表示</h2>
+<p>
+  x平均：<%= @scat_average %>
+  y平均：<%= @scata_average %>
+</p>
+<p>
+  x分散：<%= @scat_dispersion %>
+  y分散：<%= @scata_dispersion %>
+</p>
+<p>
+  共分散：<%= @dispersion %>
+  相関係数：<%= @r %>
+</p>
+<%= high_chart("scatter", @chart) %>
+<%= link_to 'タイトルに戻る',scatters_path %>

@@ -1,0 +1,3 @@
+<h2>グラフの表示</h2>
+<%= high_chart("scatter", @chart) %>
+<%= link_to 'タイトルに戻る',scatters_path %>

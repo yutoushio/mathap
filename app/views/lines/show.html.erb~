@@ -1,0 +1,56 @@
+<h2><%= @line.title %></h2>
+<%= simple_format @line.body %>
+<% if @line.line_numbers.any? %>
+<ul>
+    <% @line.line_numbers.each do |n| %>
+    <li>
+      <%= n.number %>
+      <%= link_to '[削除]' ,line_line_number_path(@line,n),
+	  method: :delete,
+	  class: 'command',data: {confirm: '本当に削除しますか？'} %>
+    </li>
+    <% end %>
+</ul>
+<% end %>
+
+
+
+<%= form_for([@line,@line.line_numbers.build]) do |f| %>
+<p>
+<%= f.text_field :number %>
+</p>
+<p>
+   <%= f.submit %>
+</p>
+<% end %>
+
+
+
+<% if @line.line_memories.any? %>
+<ul>
+    <% @line.line_memories.each do |n| %>
+    <li>
+      <%= n.body %>
+      <%= link_to '[削除]' ,line_line_memories_path(@line,n),
+          method: :delete,
+          class: 'command',data: {confirm: '本当に削除しますか？'} %>
+    </li>
+    <% end %>
+</ul>
+<% end %>
+
+
+<%= form_for([@line,@line.line_memories.build]) do |f| %>
+<p>
+<%= f.text_field :body %>
+</p>
+<p>
+   <%= f.submit %>
+</p>
+<% end %>
+
+
+<p>
+  <%= link_to '戻る',lines_path %>|
+  <%= link_to 'グラフを表示',line_line_show_index_path(@line) %>
+</p>

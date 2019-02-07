@@ -1,0 +1,3 @@
+class BarNumber < ApplicationRecord
+  belongs_to :bar
+end

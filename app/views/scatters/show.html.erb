@@ -1,0 +1,52 @@
+<h2><%= @scatter.title %></h2>
+<%= simple_format @scatter.body %>
+<h3>数値x</h3>
+<% if @scatter.scat_numbers.any? %>
+<ul>
+    <% @scatter.scat_numbers.each do |n| %>
+    <li>
+      <%= n.number %>
+      <%= link_to '[削除]' ,scatter_scat_number_path(@scatter,n),
+	  method: :delete,
+	  class: 'command',data: {confirm: '本当に削除しますか？'} %>
+    </li>
+    <% end %>
+</ul>
+<% end %>
+<h3>数値xを入力</h3>
+<%= form_for([@scatter,@scatter.scat_numbers.build]) do |f| %>
+<p>
+<%= f.text_field :number %>
+</p>
+<p>
+   <%= f.submit %>
+</p>
+<% end %>
+<h3>数値y</h3>
+<% if @scatter.scata_numbers.any? %>
+<ul>
+    <% @scatter.scata_numbers.each do |n| %>
+    <li>
+      <%= n.number %>
+      <%= link_to '[削除]' ,scatter_scata_number_path(@scatter,n),
+	  method: :delete,
+	  class: 'command',data: {confirm: '本当に削除しますか？'} %>
+    </li>
+    <% end %>
+</ul>
+<% end %>
+
+<h3>数値y入力</h3>
+
+<%= form_for([@scatter,@scatter.scata_numbers.build]) do |f| %>
+<p>
+<%= f.text_field :number %>
+</p>
+<p>
+   <%= f.submit %>
+</p>
+<% end %>
+<p>
+  <%= link_to '戻る',scatters_path %>|
+  <%= link_to 'グラフを表示',scatter_scatter_show_index_path(@scatter) %>
+</p>

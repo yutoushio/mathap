@@ -1,0 +1,16 @@
+<h1>棒グラフ</h2>
+    <ul>
+      <% @bars.each do |bar| %>
+      
+      <li><%= link_to bar.title ,bar_path(bar) %>
+	<%= link_to '[編集]' ,edit_bar_path(bar),class:'command' %>|
+	<%= link_to '[削除]' ,bar_path(bar),method: :delete,class: 'command',data: {confirm: '本当に削除しますか？'} %>
+      </li>
+      <% end %>
+    </ul>
+    
+<%= link_to '新規作成',new_bar_path %>
+<p>
+  <%= link_to'折れ線グラフ',lines_path %>|
+  <%= link_to'散布図',scatters_path %>
+  </p>

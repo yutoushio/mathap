@@ -1,0 +1,58 @@
+<h2><%= @bar.title %></h2>
+
+<%= simple_format @bar.body %>
+<h3>数値</h3>
+<% if @bar.bar_numbers.any? %>
+<ul>
+    <% @bar.bar_numbers.each do |n| %>
+    <li>
+      <%= n.number %>
+      <%= link_to '[削除]' ,bar_bar_number_path(@bar,n),
+	  method: :delete,
+	  class: 'command',data: {confirm: '本当に削除しますか？'} %>
+    </li>
+    <% end %>
+</ul>
+<% end %>
+
+
+
+<h3>数値を入力</h3>
+<%= form_for([@bar,@bar.bar_numbers.build]) do |f| %>
+<p>
+<%= f.text_field :number %>
+</p>
+<p>
+   <%= f.submit %>
+</p>
+<% end %>
+
+<h3>ラベル</h3>
+<% if @bar.memories.any? %>
+<ul>
+    <% @bar.memories.each do |n| %>
+    <li>
+      <%= n.body %>
+      <%= link_to '[削除]' ,bar_memory_path(@bar,n),
+	  method: :delete,
+	  class: 'command',data: {confirm: '本当に削除しますか？'} %>
+    </li>
+    <% end %>
+</ul>
+<% end %>
+
+<h3>ラベルを入力</h3>
+<%= form_for([@bar,@bar.memories.build]) do |f| %>
+<p>
+<%= f.text_field :body %>
+</p>
+<p>
+   <%= f.submit %>
+</p>
+<% end %>
+<p>
+
+<p>
+  <%= link_to '戻る',bars_path %>|
+  <%= link_to 'グラフを表示',bar_bar_show_index_path(@bar) %>
+</p>

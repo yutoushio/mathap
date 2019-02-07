@@ -1,0 +1,2 @@
+module ScatterNumbersHelper
+end

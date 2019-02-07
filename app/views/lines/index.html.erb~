@@ -1,0 +1,16 @@
+<h2>Lines Chart</h2>
+    <ul>
+      <% @lines.each do |line| %>
+      
+      <li><%= link_to line.title ,line_path(line) %>
+	<%= link_to '[編集]' ,edit_line_path(line),class:'command' %>|
+	<%= link_to '[削除]' ,line_path(line),method: :delete,class: 'command',data: {confirm: '本当に削除しますか？'} %>
+      </li>
+      <% end %>
+    </ul>
+    
+    <%= link_to '新規作成',new_line_path %>
+    <p>
+      <%= link_to'棒グラフ',bars_path %>|
+      <%= link_to'散布図',scatters_path %>
+      </p>

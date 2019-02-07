@@ -1,0 +1,22 @@
+<h2>編集する</h2>
+<%= form_for @line,url: line_path(@line) do |f| %>
+<p>
+  <%= f.text_field :title,placeholder: 'タイトルを入力してください' %>
+  <% if @line.errors.messages[:title].any? %>
+  <span class="error"><%= @line.errors.messages[:title][0] %></span>
+  <% end %>
+  </p>
+<p>
+  <%= f.text_area :body,placeholder: '本文を入力してください' %>
+<% if @line.errors.messages[:title].any? %>
+  <span class="error"><%= @line.errors.messages[:title][0] %></span>
+  <% end %>
+</p>
+<p>
+   <%= f.submit %>
+
+</p>
+
+<% end %><p>
+<%= link_to '戻る',lines_path %>
+</p>

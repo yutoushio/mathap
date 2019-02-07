@@ -1,0 +1,19 @@
+<%= form_for @bar do |f| %>
+<p>
+  <%= f.text_field :title,placeholder: 'タイトルを入力してください' %>
+  <% if @bar.errors.messages[:title].any? %>
+  <span class="error"><%= @bar.errors.messages[:title][0] %></span>
+  <% end %>
+  </p>
+<p>
+  <%= f.text_area :body,placeholder: '本文を入力してください' %>
+<% if @bar.errors.messages[:title].any? %>
+  <span class="error"><%= @bar.errors.messages[:title][0] %></span>
+  <% end %>
+</p>
+<p>
+   <%= f.submit %>
+
+</p>
+
+<% end %>

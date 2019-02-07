@@ -1,0 +1,16 @@
+<h2>散布図</h2>
+    <ul>
+      <% @scatters.each do |scatter| %>
+      
+      <li><%= link_to scatter.title ,scatter_path(scatter) %>
+	<%= link_to '[編集]' ,edit_scatter_path(scatter),class:'command' %>|
+	<%= link_to '[削除]' ,scatter_path(scatter),method: :delete,class: 'command',data: {confirm: '本当に削除しますか？'} %>
+      </li>
+      <% end %>
+    </ul>
+    
+    <%= link_to '新規作成',new_scatter_path %>
+    <p>
+      <%= link_to'折れ線グラフ',lines_path %>|
+      <%= link_to'棒グラフ',bars_path %>
+      </p>

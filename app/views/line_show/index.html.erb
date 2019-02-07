@@ -1,0 +1,9 @@
+<h2>グラフを表示</h2>
+<p>
+  平均：<%= @average %> 
+  分散：<%= @dispersion %> 
+  標準偏差：<%= @deviation %> 
+  </p>
+<%= high_chart("graph", @chart) %>
+<%= high_chart("average_graph", @average_chart) %>
+<%= link_to'タイトルに戻る',lines_path %>

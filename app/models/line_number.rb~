@@ -1,0 +1,3 @@
+class LineNumber < ApplicationRecord
+  belongs_to :line
+end
