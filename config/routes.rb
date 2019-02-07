@@ -12,9 +12,11 @@ Rails.application.routes.draw do
     resources :bar_show
   end
 
+
   resources :scatters do
     resources :scat_numbers,only: [:create,:destroy]
     resources :scata_numbers,only: [:create,:destroy]
     resources :scatter_show
   end
+root 'bars#index'
 end
