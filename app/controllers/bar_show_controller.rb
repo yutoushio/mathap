@@ -44,7 +44,7 @@ class BarShowController < ApplicationController
       end
     end
     medium = check_medium(@data_sort)
-
+    @tyuou = medium
     if ssiizzee % 2 ==0
       cant = 0
       for i in 0..ssiizzee/2 -1
@@ -108,6 +108,10 @@ class BarShowController < ApplicationController
 
       c.series(name: "A", data: @box_data)
     end
+    @mini = min
+    @Q1 = q1
+    @Q3 = q3
+    @maxx = max
     @box_chart = LazyHighCharts::HighChart.new("box_graph") do |f|
       f.chart(inverted:true,type:'boxplot')
       f.title(text: "箱ひげ図")

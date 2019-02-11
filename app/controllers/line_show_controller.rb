@@ -7,6 +7,7 @@ class LineShowController < ApplicationController
     @tmp = Array.new()
     @tmp2 = Array.new()
     @average_array = Array.new()
+    @medium_array = Array.new()
     @memories = @line.line_memories.all
     @line_memory = Array.new
     @average
@@ -31,12 +32,26 @@ class LineShowController < ApplicationController
 
     @average = @average/@data.size.to_i
     @dispersion = 0
+        def check_medium(data)
+      size = data.size
+      size_m = size/2
+      if size%2 == 0
+        m = (data[size_m]+data[(size_m - 1)])/2
+      else
+        m = data[(size/2)]
+      end
+    end
+
+    @medium = check_medium(@data.sort)
+
     for i in 0..(@data.size.to_i-1) do
-       @average_array[i] = @average
+      @average_array[i] = @average
+      @medium_array[i] = @medium
       @dispersion = @dispersion + (@data[i]-@average)*(@data[i]-@average)
     end
     @dispersion = @dispersion/(@data.size)
     @deviation = Math.sqrt(@dispersion)
+
     month = ['1日','2日','3日','4日','5日','6日']
      @chart = LazyHighCharts::HighChart.new("graph") do |c|
       c.title(text: @line.title)
@@ -58,6 +73,16 @@ class LineShowController < ApplicationController
               })
       c.series(name: "データ", data: @data,type:'line')
       c.series(name: "平均", data: @average_array,type:'line')
+    end
+        @medium_chart = LazyHighCharts::HighChart.new("medium_graph") do |c|
+      c.title(text: "中央値との比較")
+      c.xAxis(categories: @line_memory,labels: {
+                style: {
+                  fontSize: '30px'}
+              })
+      c.series(name: "データ", data: @data,type:'line')
+      c.series(name: "中央値", data: @medium_array,type:'line')
      end
+
   end
 end

@@ -1,5 +1,31 @@
 <h2>グラフを表示</h2>
+
+<%= high_chart("agraph", @bar_chart) %>
+<body>
+
 <p>
+  最小値：<%= @mini %>
+</p>
+<p>
+  第一四分位値：<%= @Q1 %>
+</p>
+<p>
+  中央値：<%= @tyuou %>
+</p>
+
+<p>
+  第三四分位値：<%= @Q3 %>
+</p>
+<p>
+  最大値：<%= @maxx %>
+</p>
+<p>
+  四分位偏差：<%= (@Q3 - @Q1)/2.0 %>
+</p>
+
+  <%= high_chart("sort_chart", @sort_chart) %>
+ <%= high_chart("box_chart", @box_chart) %>
+ <p>
   平均：<%= @average %>
 </p>
 <p>
@@ -10,12 +36,12 @@
 </p>
 
 
-<%= high_chart("agraph", @bar_chart) %>
-<body>
- <%= high_chart("sort_chart", @sort_chart) %>
-  <%= high_chart("box_chart", @box_chart) %>
   <%= high_chart("average_double_chart", @average_double_chart) %>
-<%= high_chart("average_chart", @average_chart) %>
+  <%= high_chart("average_chart", @average_chart) %>
+<p>
+  中央値：<%= @tyuou %>
+</p>
+  
   <%= high_chart("medium_double_chart", @medium_double_chart) %>
 <%= high_chart("medium_chart", @medium_chart) %>
 
