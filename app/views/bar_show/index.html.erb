@@ -4,42 +4,42 @@
 <body>
 
 <p>
-  最小値：<%= @mini %>
+  最小値：<%= @mini.round(2) %>
 </p>
 <p>
-  第一四分位値：<%= @Q1 %>
+  第一四分位値：<%= @Q1.round(2) %>
 </p>
 <p>
-  中央値：<%= @tyuou %>
+  中央値：<%= @tyuou.round(2) %>
 </p>
 
 <p>
-  第三四分位値：<%= @Q3 %>
+  第三四分位値：<%= @Q3.round(2) %>
 </p>
 <p>
-  最大値：<%= @maxx %>
+  最大値：<%= @maxx.round(2) %>
 </p>
 <p>
-  四分位偏差：<%= (@Q3 - @Q1)/2.0 %>
+  四分位偏差：<%= ((@Q3 - @Q1)/2.0).round(2) %>
 </p>
 
   <%= high_chart("sort_chart", @sort_chart) %>
  <%= high_chart("box_chart", @box_chart) %>
  <p>
-  平均：<%= @average %>
+  平均：<%= @average.round(2) %>
 </p>
 <p>
-  分散：<%= @dispersion %>
+  分散：<%= @dispersion.round(2) %>
 </p>
 <p>
-  標準偏差：<%= @deviation %>
+  標準偏差：<%= @deviation.round(2) %>
 </p>
 
 
   <%= high_chart("average_double_chart", @average_double_chart) %>
   <%= high_chart("average_chart", @average_chart) %>
 <p>
-  中央値：<%= @tyuou %>
+  中央値：<%= @tyuou.round(2) %>
 </p>
   
   <%= high_chart("medium_double_chart", @medium_double_chart) %>

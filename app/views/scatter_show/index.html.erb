@@ -9,7 +9,7 @@
 </p>
 <p>
   共分散：<%= @dispersion %>
-  相関係数：<%= @r %>
+  相関係数：<%= @r.round(2) %>
 </p>
 <%= high_chart("scatter", @chart) %>
 <%= link_to 'タイトルに戻る',scatters_path %>

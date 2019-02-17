@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-OA
 class ScatterShowController < ApplicationController
   def index
     @scatter = Scatter.find(params[:scatter_id])
@@ -27,6 +27,11 @@ class ScatterShowController < ApplicationController
     for i in 0..(@scata_data.size.to_i-1) do
       @tmp3[i] = [@scat_data[i],@scata_data[i]]
     end
+    if @scat_data.max > @scata_data.max
+      @max = @scat_data.max
+    elsif @scat_data.max < @scata_data.max
+      @max = @scata_data.max
+    end
     @scat_average = 0
     @scata_average = 0
     for i in 0..(@scata_data.size.to_i-1) do
@@ -50,17 +55,23 @@ class ScatterShowController < ApplicationController
     @dispersion = @dispersion/@scata_data.size
     @r = @dispersion/(@scat_dispersion*@scata_dispersion)
     @chart = LazyHighCharts::HighChart.new("scatter") do |c|
-      c.chart(type: 'scatter',width:700,heigth:700)
+      c.chart(type: 'scatter',width:950,height:950)
       c.title(text: @scatter.title)
-      c.xAxis(labels: {
+      c.xAxis(min:0,max:@max+1,labels: {
                 style: {
                   fontSize: '30px'}
               })
-      c.yAxis(labels: {
+      c.yAxis(min:0,max:@max+1,
+                title:{
+                  text:'Y'
+                },
                 style: {
                   fontSize: '30px'}
-              })
-      c.series(name: "A", data: @tmp3)
+                )
+      c.plotOptions(scatter:
+                    {marker:{
+                        radius:15}})
+      c.series(name: "   X", data: @tmp3)
     end
 
   end
